@@ -40,7 +40,9 @@ public class VersionHealthChecker : IHealthCheck
                         { nameof(FileVersionInfo.FileVersion), attrFileVersion?.Version },
                         { "ConfigVersion", _configuration["ConfigVersion"] },
                         { nameof(AssemblyDescriptionAttribute.Description), attrDescription?.Description },
-                        { nameof(AssemblyConfigurationAttribute.Configuration), attrConfiguration?.Configuration }
+                        { nameof(AssemblyConfigurationAttribute.Configuration), attrConfiguration?.Configuration },
+                        { nameof(System.Runtime.GCSettings.IsServerGC), System.Runtime.GCSettings.IsServerGC},
+                        { nameof(System.Runtime.GCSettings.LatencyMode), System.Runtime.GCSettings.LatencyMode}
                     };
 
             return Task.FromResult(HealthCheckResult.Healthy(data: d));
